@@ -63,6 +63,7 @@ class Matrix:
         Matrix._cache[(hash(self), hash(other))] = result
         return result
 
+    """Sum of matrix elements"""
     def __hash__(self):
         h = 0
         for row in self.m:
