@@ -1,5 +1,4 @@
 from matrix import Matrix
-import numpy as np
 
 if __name__ == '__main__':
     a = Matrix([[1, 2]])

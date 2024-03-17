@@ -1,11 +1,27 @@
-class Matrix:
+class MatrixHashMixin:
+    """Sum of matrix elements"""
+    def __hash__(self):
+        h = 0
+        for row in self._m:
+            for elem in row:
+                h += elem
+        return h
+
+    def __eq__(self, other):
+        if not isinstance(other, Matrix):
+            return False
+
+        return self._m == other._m
+
+
+class Matrix(MatrixHashMixin):
     _cache = {}
 
     def __init__(self, m):
         if not isinstance(m, list) or any([not isinstance(row, list) for row in m]):
             raise ValueError('Invalid matrix')
 
-        self.m = m
+        self._m = m
         self.rows = len(m)
         self.cols = len(m[0])
 
@@ -22,7 +38,7 @@ class Matrix:
         for i in range(self.rows):
             row = []
             for j in range(self.cols):
-                row.append(self.m[i][j] + other.m[i][j])
+                row.append(self._m[i][j] + other._m[i][j])
             result.append(row)
 
         return Matrix(result)
@@ -36,7 +52,7 @@ class Matrix:
         for i in range(self.rows):
             row = []
             for j in range(self.cols):
-                row.append(self.m[i][j] * other.m[i][j])
+                row.append(self._m[i][j] * other._m[i][j])
             result.append(row)
 
         return Matrix(result)
@@ -55,7 +71,7 @@ class Matrix:
             for j in range(other.cols):
                 el = 0
                 for k in range(self.cols):
-                    el += self.m[i][k] * other.m[k][j]
+                    el += self._m[i][k] * other._m[k][j]
                 row.append(el)
             result.append(row)
 
@@ -63,23 +79,9 @@ class Matrix:
         Matrix._cache[(hash(self), hash(other))] = result
         return result
 
-    """Sum of matrix elements"""
-    def __hash__(self):
-        h = 0
-        for row in self.m:
-            for elem in row:
-                h += elem
-        return h
-
-    def __eq__(self, other):
-        if not isinstance(other, Matrix):
-            return False
-
-        return self.m == other.m
-
     def __str__(self):
         res = ""
-        for row in self.m:
+        for row in self._m:
             for el in row:
                 res += "{:5d}".format(el)
             res += "\n"
