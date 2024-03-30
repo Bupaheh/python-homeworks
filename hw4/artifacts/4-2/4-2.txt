@@ -1,0 +1,16 @@
+Processes; n_jobs: 1; Time: 3.803989887237549
+Processes; n_jobs: 2; Time: 2.035400629043579
+Processes; n_jobs: 3; Time: 1.3720402717590332
+Processes; n_jobs: 4; Time: 1.0911009311676025
+Processes; n_jobs: 5; Time: 1.3493776321411133
+Processes; n_jobs: 6; Time: 1.3301069736480713
+Processes; n_jobs: 7; Time: 1.3673512935638428
+Processes; n_jobs: 8; Time: 1.379225254058838
+Threads; n_jobs: 1; Time: 4.373895883560181
+Threads; n_jobs: 2; Time: 3.8445379734039307
+Threads; n_jobs: 3; Time: 3.8022990226745605
+Threads; n_jobs: 4; Time: 3.977348804473877
+Threads; n_jobs: 5; Time: 3.9036810398101807
+Threads; n_jobs: 6; Time: 3.9660897254943848
+Threads; n_jobs: 7; Time: 4.1205198764801025
+Threads; n_jobs: 8; Time: 4.183796167373657
